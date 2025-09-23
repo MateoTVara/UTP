@@ -1,0 +1,236 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{../assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Investigación Operativa} \\
+  \vspace{1cm}
+  \large \textbf{S02 - Ejercicios}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 36373}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Alberto Andre Reyna Alcantara
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\centering
+\section*{Ejercicio1 - Multiples Soluciones}
+
+\[
+\begin{array}{l l l l l l l}
+3x_1 + 6x_2 \leq 15 & \rightarrow & 3(0) + 6x_2 = 15        & \wedge & 3x_1 + 2(0) = 15   \\
+                    &             & x_2 = 2.5;\; (0,\,2.5)  &        & x = 5;\; (5,\,0)   \\
+                    &             &                         &        &                    \\
+4x_1 + 4x_2 \leq 16      & \rightarrow & 4(0) + 4x_2 = 16        & \wedge & 4x_1 + 4(0) = 16   \\
+                    &             & x_2 = 4;\; (0,\,4)      &        & x_1 = 4;\; (4,\,0) \\
+\end{array}
+\]
+
+\vspace{0.5cm}
+
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xmin=0, xmax=6,
+    ymin=0, ymax=5,
+    grid=both,
+    xlabel={$x$},
+    ylabel={$y$},
+    width=\linewidth,
+    height=\linewidth,
+    enlargelimits=false,
+    axis equal image
+  ]
+  % Red line: 3x_1 + 6x_2 = 15
+  \addplot[red, thick] { (5-x)/2 };
+  \addlegendentry{\( 3x_1 + 6x_2 \leq 15 \)}   
+  % Blue line: 4x_1 + 4x_2 = 16
+  \addplot[blue, thick] { 4 - x };
+  \addlegendentry{\( 4x_1 + 4x_2 \leq 16 \)}
+
+  \fill[gray, opacity=0.5] (0,0) -- (0,2.5) -- (3,1) -- (4,0) -- cycle;
+
+  % Puntos de interés
+  \addplot[black, mark=*] coordinates {(0,2.5) (3,1) (4,0)};
+  \node at (axis cs:0,2.5) [above right] {\((0,2.5)\)};
+  \node at (axis cs:3,1) [above right] {\((3,1)\)};
+  \node at (axis cs:4,0) [above left] {\((4,0)\)};
+  \end{axis}
+\end{tikzpicture}
+
+\[
+\begin{array}{c c l c l}
+\text{Maximizar}\;Z & = & 20x + 40y       &   &     \\
+(0;\, 2.5)          & = & 20(0) + 40(2.5) & = & 100 \\
+(3;\, 1)            & = & 20(3) + 40(1)   & = & 100 \\
+(4;\, 0)            & = & 20(4) + 40(0)   & = & 80  \\
+\end{array}
+\]
+
+\subsection*{Conclusión}
+Los puntos óptimos son \((0, 2.5)\) y \((3, 1)\), lo que significa que se debe producir 0 sacos de harina y 2.5 sacos de trigo, o 3 sacos de harina y 1 saco de trigo para maximizar el beneficio total de S/100.
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section*{Ejercicio2 - Solución No Acotada}
+\[
+\begin{array}{l l l l l l l}
+  4x_1 + 8x_2 \geq 240 & \rightarrow & 4(0) + 8x_2 = 240        & \wedge & 4x_1 + 8(0) = 240   \\
+                      &             & x_2 = 30;\; (0,\,30)  &        & x = 60;\; (60,\,0)   \\
+                      &             &                         &        &                    \\
+  12x_1 + 6x_2 \leq 360      & \rightarrow & 12(0) + 6x_2 = 360        & \wedge & 12x_1 + 6(0) = 360   \\
+                      &             & x_2 = 60;\; (0,\,60)      &        & x_1 = 30;\; (30,\,0) \\
+\end{array}
+\]
+
+\vspace{0.5cm}
+
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xmin=0, xmax=70,
+    ymin=0, ymax=70,
+    grid=both,
+    xlabel={$x$},
+    ylabel={$y$},
+    width=\linewidth,
+    height=0.9\linewidth,
+    enlargelimits=false,
+    axis equal image
+  ]
+  % Red line: 4x_1 + 8x_2 = 240
+  \addplot[red, thick, domain=0:60] { 30 - 0.5*x };
+  \addlegendentry{\( 4x_1 + 8x_2 \geq 240 \)}   
+  % Blue line: 12x_1 + 6x_2 = 360
+  \addplot[blue, thick, domain=0:60] { 60 - 2*x };
+  \addlegendentry{\( 12x_1 + 6x_2 \geq 360 \)}
+
+  \fill[gray, opacity=0.5] (0,70) -- (0, 60) -- (20, 20) -- (60, 0) -- (70,0) -- (70,70) --cycle;
+
+  % Puntos de interés
+  \addplot[black, only marks, mark=*] coordinates {(0,60) (60,0) (20,20)};
+  \node at (axis cs:0,60) [above right] {\((0,60)\)};
+  \node at (axis cs:60,0) [above right] {\((60,0)\)};
+  \node at (axis cs:20,20) [above left] {\((20,20)\)};
+  \end{axis}
+\end{tikzpicture}
+
+\[
+\begin{array}{c c l c l}
+\text{Maximizar}\;Z & = & 40x + 50y       &   &     \\
+(0;\, 60)          & = & 40(0) + 50(60) & = & 3000 \\
+(20;\, 20)        & = & 40(20) + 50(20) & = & 1800 \\
+(60;\, 0)        & = & 40(60) + 50(0) & = & 2400 \\
+\end{array}
+\]
+
+\subsection*{Conclusión}
+La solución óptima no está acotada, lo que significa que el problema puede no tener un límite superior en la función objetivo. En este caso, se puede aumentar indefinidamente el valor de \(Z\) al aumentar \(x\) y \(y\) dentro de las restricciones dadas.
+
+
+
+
+
+
+
+\newpage
+\section*{Ejercicio3 - Ninguna Solución}
+\[
+\begin{array}{l l l l l l l}
+  4x_1 + 2x_2 \leq 4 & \rightarrow & 4(0) + 2x_2 = 4        & \wedge & 4x_1 + 2(0) = 4   \\
+                      &             & x_2 = 2;\; (0,\,2)  &        & x = 1;\; (1,\,0)   \\
+                      &             &                         &        &                    \\
+  9x_1 + 12x_2 \geq 36 & \rightarrow & 9(0) + 12x_2 = 36        & \wedge & 9x_1 + 12(0) = 36   \\
+                      &             & x_2 = 3;\; (0,\,3)      &        & x_1 = 4;\; (4,\,0) \\
+\end{array}
+\]
+
+\vspace{0.5cm}
+
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xmin=0, xmax=5,
+    ymin=0, ymax=5,
+    grid=both,
+    xlabel={$x$},
+    ylabel={$y$},
+    width=\linewidth,
+    height=0.9\linewidth,
+    enlargelimits=false,
+    axis equal image
+  ]
+  % Red line: 4x_1 + 2x_2 = 4
+  \addplot[red, thick] { 2 - 2*x };
+  \addlegendentry{\( 4x_1 + 2x_2 \leq 4 \)}   
+  % Blue line: 9x_1 + 12x_2 = 36
+  \addplot[blue, thick] { 3 - (3/4)*x };
+  \addlegendentry{\( 9x_1 + 12x_2 \geq 36 \)}
+  \end{axis}
+\end{tikzpicture}
+
+\subsection*{Conclusión}
+No existe una solución factible que satisfaga todas las restricciones del problema. Esto indica que el sistema de ecuaciones es inconsistente y no hay puntos que cumplan simultáneamente con todas las condiciones impuestas.
+
+
+
+
+\newpage
+\section*{Recursos y créditos}
+
+\begin{itemize}
+    \item \textbf{Código fuente:} \href{https://github.com/MateoTVara/C08-InvestigacionOperativa}{Repositorio GitHub - Investigación Operativa}
+    \item \textbf{Carátula por:} \href{https://github.com/1nfinit0}{1nfinit0 en GitHub}
+\end{itemize}
+
+
+
+\end{document}

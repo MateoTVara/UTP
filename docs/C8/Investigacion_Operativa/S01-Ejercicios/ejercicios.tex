@@ -1,0 +1,374 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{../assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Investigación Operativa} \\
+  \vspace{1cm}
+  \large \textbf{S01 - Ejercicios}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 36373}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Alberto Andre Reyna Alcantara
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\centering
+\section*{Ejercico 1}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+                   & Harina  & Trigo   & Disponibilidad \\ \hline
+    Refinación     & 3 horas & 2 horas & 18 horas       \\ \hline
+    Empaquetación  & 2 horas & 1 hora  & 10 horas       \\ \hline
+    Almacenamiento & 1 hora  & 1 hora  & 5 horas        \\ \hline
+    Beneficio      & S/5000  & S/3500  &                \\ \hline
+    \end{tabular}
+    \caption{Variables y restricciones}
+    \label{tab:Ejercicio1}
+\end{table}
+
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0, xmax=7,
+        ymin=0, ymax=11,
+        grid=both,
+        xlabel={$x$},
+        ylabel={$y$},
+        width=\linewidth,
+        height=0.6\linewidth,
+        enlargelimits=false,
+        axis equal image
+    ]
+    % Black line: 2x + y = 10
+    \addplot[black, thick] { -2*x + 10 };
+    \addlegendentry{\( 2x + y \leq 10 \)}   
+    % Blue line: 3x + 2y = 18
+    \addplot[blue, thick, domain=0:6] { -1.5*x + 9 };
+    \addlegendentry{\( 3x + 2y \leq 18 \)}
+    % Red line: x + y = 5
+    \addplot[red, thick] { -x + 5 };
+    \addlegendentry{\( x + y \leq 5 \)}
+
+    \fill[gray!20, opacity=0.75] (0,0) -- (0,5) -- (5,0) -- cycle;
+
+    % Puntos de interés
+    \addplot[black, mark=*] coordinates {(0,5) (0,0) (5,0)};
+    \node at (axis cs:0,5) [above right] {\((0,5)\)};
+    \node at (axis cs:0,0) [above right] {\((0,0)\)};
+    \node at (axis cs:5,0) [above left] {\((5,0)\)};
+    \end{axis}
+\end{tikzpicture}
+
+\[
+\begin{array}{l l l l l l l}
+3x + 2y \leq 18 & \rightarrow & 3(0) + 2y = 18     & \wedge & 3x + 2(0) = 18   \\
+                &             & y = 9;\; (0,\,9)   &        & x = 6;\; (6,\,0) \\
+                &             &                    &        &                  \\
+2x + y \leq 10  & \rightarrow & 2(0) + y = 10      & \wedge & 2x + 1(0) = 10   \\
+                &             & y = 10;\; (0,\,10) &        & x = 5;\; (5,\,0) \\
+                &             &                    &        &                  \\
+x + y \leq 5    & \rightarrow & x + y = 5          & \wedge & x + y = 5        \\
+                &             & y = 5;\; (0,\,5)   &        & x = 5;\; (5,\,0) \\
+\end{array}
+\]
+
+\vspace{0.5cm}
+
+\[
+\begin{array}{c c l c l}
+\text{Maximizar}\;Z & = & 5000x + 3500y     &   &       \\
+(0;\, 0)            & = & 5000(0) + 3500(0) & = & 0     \\
+(0;\, 5)            & = & 5000(0) + 3500(5) & = & 17500 \\
+(5;\, 0)            & = & 5000(5) + 3500(0) & = & 25000 \\
+\end{array}
+\]
+
+
+\subsection*{Conclusión}
+El punto óptimo es $(5, 0)$, lo que significa que se debe producir 5 sacos de harina y 0 sacos de trigo para maximizar el beneficio total de S/25000.
+
+
+
+
+
+\newpage
+\section*{Ejercico 2}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+                & Grande        & Pequeño     & Disponibilidad \\ \hline
+    Capacidad   & 50 asientos   & 40 asientos & 400            \\ \hline
+    Conductores & 1 conductor   & 1 conductor & 9              \\ \hline
+    Costo       & S/800         & S/600       &                \\ \hline
+    \end{tabular}
+    \caption{Variables y restricciones}
+    \label{tab:Ejercicio2}
+\end{table}
+
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0, xmax=10,
+        ymin=0, ymax=11,
+        grid=both,
+        xlabel={$x$},
+        ylabel={$y$},
+        width=\linewidth,
+        height=0.75\linewidth,
+        enlargelimits=false,
+        axis equal image
+    ]
+    % Blue line: 50x + 40y = 400
+    \addplot[blue, thick, domain=0:8] { (40 - 5*x)/4 };
+    \addlegendentry{\( 50x + 40y \geq 400 \)}
+    % Red line: x + y = 9
+    \addplot[red, thick, domain=0:9] { 9 - x };
+    \addlegendentry{\( x + y \leq 9 \)}
+
+    \fill[gray!20, opacity=0.75] (8,0) -- (4,5) -- (9,0) -- cycle;
+
+    \addplot[black, mark=*] coordinates {(8,0) (4,5) (9,0)};
+    \node at (axis cs:8,0) [above left] {\((8,0)\)};
+    \node at (axis cs:4,5) [above right] {\((4,5)\)};
+    \node at (axis cs:9,0) [above left] {\((9,0)\)};
+    \end{axis}
+\end{tikzpicture}
+
+\[
+\begin{array}{l l l l l l l}
+50x + 40y \geq 400 & \rightarrow & 50(0) + 40y = 400  & \wedge & 50x + 40(0) = 400 \\
+                   &             & y = 10;\; (0,\,10) &        & x = 8;\; (8,\,0)  \\
+                   &             &                    &        &                   \\
+2x + y \leq 10     & \rightarrow & 0 + y = 9          & \wedge & x + 0 = 9         \\
+                   &             & y = 9;\; (0,\,9)   &        & x = 9;\; (9,\,0)  \\
+\end{array}
+\]
+
+\vspace{0.25cm}
+
+\[
+\begin{array}{c c l c l}
+\text{Minimizar}\;Z & = & 800x + 600y     &   &      \\
+(8;\, 0)            & = & 800(8) + 600(0) & = & 6400 \\
+(4;\, 5)            & = & 800(4) + 600(5) & = & 6200 \\
+(9;\, 0)            & = & 800(9) + 600(0) & = & 7200 \\
+\end{array}
+\]
+
+\subsection*{Conclusión}
+El punto óptimo es $(4, 5)$, lo que significa que se deben producir 4 unidades grandes y 5 unidades pequeñas para minimizar el costo total a S/6200.
+  
+
+
+
+
+\newpage
+\section*{Ejercico 3}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+                & Grandes  & Pequeños  & Disponibilidad \\ \hline
+    Peso (masa) & 40 gr.   & 30 gr.    & 600 gr.        \\ \hline
+    Cantidad    & ${x \geq 3}$ & ${y \geq 2x}$ & ${\geq 9}$         \\ \hline
+    Costo       & S/2      & S/1       &                \\ \hline
+    \end{tabular}
+    \caption{Variables y restricciones}
+    \label{tab:Ejercicio3}
+\end{table}
+
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0, xmax=16,
+        ymin=0, ymax=22,
+        grid=both,
+        xlabel={$x$},
+        ylabel={$y$},
+        width=\linewidth,
+        height=0.75\linewidth,
+        enlargelimits=false,
+        axis equal image
+    ]
+    % Blue line: 40x + 30y = 600
+    \addplot[blue, thick, domain=0:15] { (600 - 40*x)/30 };
+    \addlegendentry{\( 40x + 30y \leq 600 \)}
+    % Red line: y = 2x
+    \addplot[red, thick] coordinates{ (0,0) (11, 22) }; % Simulado
+    \addlegendentry{\( y \geq 2x \)}
+    % Green line: x = 3
+    \addplot[green, thick] coordinates {(3,0) (3,22)}; % Simulado
+    \addlegendentry{\( x \geq 3 \)}
+
+    \fill[gray!20, opacity=0.75] (3,6) -- (6,12) -- (3,16) -- cycle;
+
+    % Puntos de interés
+    \addplot[black, mark=*] coordinates {(3,6) (6,12) (3,16)};
+    \node at (axis cs:3,16) [above right] {\((3,16)\)};
+    \node at (axis cs:3,6) [above right] {\((3,6)\)};
+    \node at (axis cs:6,12) [above right] {\((6,12)\)};
+    \end{axis}
+\end{tikzpicture}
+
+\[
+\begin{array}{l l l l l l l}
+40x + 30y \leq 600 & \rightarrow & 40(0) + 30y = 600  & \wedge & 40x + 30(0) = 600   \\
+                   &             & y = 20;\; (0,\,20) &        & x = 15;\; (15,\,0)  \\
+\end{array}
+\]
+
+\vspace{0.5cm}
+
+\[
+\begin{array}{c c l c l}
+\text{Maximizar}\;Z & = & 2x + y    &   &    \\
+(3;\, 16)           & = & 2(3) + 16 & = & 22 \\
+(6;\, 12)           & = & 2(6) + 12 & = & 24 \\
+(3;\, 6)            & = & 2(3) + 6  & = & 12 \\
+\end{array}
+\]
+
+\subsection*{Conclusión}
+El punto óptimo es $(6, 12)$, lo que significa que se deben producir 6 unidades grandes y 12 unidades pequeñas para maximizar el beneficio total a S/24.
+
+
+
+
+
+\newpage
+\section*{Ejercico 4}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+              & A        & B        & Disponibilidad \\ \hline
+    A maquina & 2 horas  & 3 horas  & 300 horas      \\ \hline
+    A mano    & 1/2 hora & 1/4 hora & 60 horas       \\ \hline
+    Cantidad  & 1        & 1        & 90             \\ \hline
+    Beneficio & S/1600   & S/1550   &                \\ \hline
+    \end{tabular}
+    \caption{Variables y restricciones}
+    \label{tab:Ejercicio4}
+\end{table}
+
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0, xmax=160,
+        ymin=0, ymax=250,
+        grid=both,
+        xlabel={$x$},
+        ylabel={$y$},
+        width=\linewidth,
+        height=0.7\linewidth,
+        enlargelimits=false,
+        axis equal image
+    ]
+    % Blue line: 2x + 3y = 300
+    \addplot[blue, thick, domain=0:150] { (300 - 2*x)/3 };
+    \addlegendentry{\( 2x + 3y \leq 300 \)}
+    % Red line: 1/2x + 1/4y = 60
+    \addplot[red, thick, domain=0:240] { 240 - 2*x };
+    \addlegendentry{\( \frac{1}{2}x + \frac{1}{4}y \leq 60 \)}
+    % Green line: x + y = 90
+    \addplot[green, thick, domain=0:90] { 90 - x };
+    \addlegendentry{\( x + y \leq 90 \)}
+
+    \fill[gray!20, opacity=0.75] (0,100) -- (0,90) -- (90,0) -- (120,0) -- (105,30) --cycle;
+
+    % Puntos de interés
+    \addplot[black, mark=*] coordinates {(0,100) (0,90) (90,0) (120,0) (105,30)};
+    \node at (axis cs:0,100) [above right] {\((0,100)\)};
+    \node at (axis cs:0,90) [above right] {\((0,90)\)};
+    \node at (axis cs:90,0) [above left] {\((90,0)\)};
+    \node at (axis cs:120,0) [above right] {\((120,0)\)};
+    \node at (axis cs:105,30) [above right] {\((105,30)\)};
+    \end{axis}
+\end{tikzpicture}
+
+\vspace{-0.5cm}
+
+\[
+\begin{array}{l l l l l l l}
+2x + 3y \leq 300    & \rightarrow & 2(0) + 3y = 300                     & \wedge & 2x + 3(0) = 300                    \\
+                    &             & y = 100;\; (0,\,100)                &        & x = 150;\; (150,\,0)               \\
+                    &             &                                     &        &                                    \\
+1/2x + 1/4y \leq 60 & \rightarrow & \frac{1}{2}(0) + \frac{1}{4}y = 60  & \wedge & \frac{1}{2}x + \frac{1}{4}(0) = 60 \\
+                    &             & y = 240;\; (0,\,240)                &        & x = 120;\; (120,\,0)               \\
+                    &             &                                     &        &                                    \\
+x + y \geq 90       & \rightarrow & x + y = 90                          & \wedge & x + y = 90                         \\
+                    &             & y = 90;\; (0,\,90)                  &        & x = 90;\; (90,\,0)                 \\
+\end{array}
+\]
+
+\vspace{-0.5cm}
+
+\[
+\begin{array}{c c l c l}
+\text{Maximizar}\;Z & = & 1600x + 1550y        &   &        \\
+(0;\, 90)           & = & 1600(0) + 1550(90)   & = & 139500 \\
+(0;\, 100)          & = & 1600(0) + 1550(100)  & = & 155000 \\
+(90;\, 0)           & = & 1600(90) + 1550(0)   & = & 144000 \\
+(120;\, 0)          & = & 1600(120) + 1550(0)  & = & 192000 \\
+(105;\, 30)         & = & 1600(105) + 1550(30) & = & 214500 \\
+\end{array}
+\]
+
+\vspace{-0.5cm}
+
+\subsection*{Conclusión}
+El punto óptimo es $(105, 30)$, lo que significa que se deben producir 105 unidades del televisor A y 30 unidades del televisor B para maximizar el beneficio total a S/214500.
+
+\newpage
+\section*{Recursos y créditos}
+
+\begin{itemize}
+    \item \textbf{Código fuente:} \href{https://github.com/MateoTVara/C08-InvestigacionOperativa}{Repositorio GitHub - Investigación Operativa}
+    \item \textbf{Carátula por:} \href{https://github.com/1nfinit0}{1nfinit0 en GitHub}
+\end{itemize}
+\end{document}
