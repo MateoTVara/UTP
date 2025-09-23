@@ -1,0 +1,401 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=3cm, bottom=4cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{../assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Investigación Operativa} \\
+  \vspace{1cm}
+  \large \textbf{S06 - Ejercicios}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 36373}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Alberto Andre Reyna Alcantara
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\pagenumbering{arabic}
+\section*{Ejercicio 1}
+\noindent Una compañía fabrica cada uno de sus productos en los siguientes 3 procesos de manera
+secuencial. Los tiempos en minutos y utilidad de cada producto se presentan la siguiente tabla: \\
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+  \hline
+  & Proceso 1 (min) & Proceso 2 (min) & Proceso 3 (min) & Utilidad (S/.) \\
+  \hline
+  Proucto 1 & 10 & 6 & 8 & 2 \\
+  Producto 2 & 5 & 20 & 10 & 3 \\
+  \hline
+  Disponibilidad & 12 horas & 10 horas & 10 horas & \\
+  \hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+  \item[a)] Formular el modelo y resolver utilizando el método gráfico.
+  \item[b)] Si pudiera conseguir tiempo adicional en algún proceso, ¿de cuál sería?, y ¿por qué?
+  \item[c)] Indique el rango de sensibilidad de los coeficientes objetivos
+  \item[d)] Indique el rango de sensibilidad de los recursos disponibles
+\end{itemize}
+
+\[
+\begin{array}{c|c|c}
+  \begin{array}{l}
+    \textbf{No Vinculante} \\
+    \textbf{Vinculante} \\
+    \textbf{Vinculante} \\ 
+  \end{array}
+  &
+  \begin{array}{l c r}
+    10x_1 +5x_2 & \leq & 720 \\
+    6x_1 +20x_2 & \leq & 600 \\
+    8x_1 +10x_2 & \leq & 600 \\
+  \end{array}
+  &
+  \begin{array}{l}
+    (0; 144) (72; 0) \\
+    (0; 30) (100; 0) \\
+    (0; 60) (75; 0) \\
+  \end{array}
+\end{array}
+\]
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+      axis lines = middle,
+      xlabel = {$x_1$},
+      ylabel = {$x_2$},
+      xtick={0,10,20,30,40,50,60,70,80},
+      ytick={0,10,20,30,40,50,60,70,80},
+      ymin=0,
+      ymax=80,
+      xmin=0,
+      xmax=80,
+      grid=both,
+      width=12cm,
+      height=10cm,
+      legend pos=north east,
+    ]
+    
+    % Proceso 1
+    \addplot[
+      domain=0:72,
+      samples=100,
+      color=blue,
+    ]
+    {(-10*x + 720)/5};
+    \addlegendentry{Proceso 1}
+    
+    % Proceso 2
+    \addplot[
+      domain=0:100,
+      samples=100,
+      color=red,
+    ]
+    {(-6*x + 600)/20};
+    \addlegendentry{Proceso 2}
+    
+    % Proceso 3
+    \addplot[
+      domain=0:75,
+      samples=100,
+      color=green,
+    ]
+    {(-8*x + 600)/10};
+    \addlegendentry{Proceso 3}
+    
+    % Sombra de la región factible
+    \fill[gray!30, opacity=0.5] (0,0) -- (0,30) -- (60,12) -- (70,4) -- (72,0) -- cycle;
+    
+    % Puntos de intersección
+    \filldraw[black] (0,30) circle (2pt) node[anchor=south west] {};
+    \filldraw[black] (72,0) circle (2pt) node[anchor=north west] {};
+    \filldraw[black] (70,4) circle (2pt) node[anchor=north west] {};
+    \filldraw[black] (60,12) circle (2pt) node[anchor=north west] {};
+    
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\noindent Se puede conseguir más tiempo en el Proceso 1, ya que es el único recurso no vinculante.
+Exactamente se puede conseguir hasta 60 minutos adicionales (1 hora).
+
+\vspace{1cm}
+
+\[
+\begin{array}{c|c}
+  \begin{array}{l c r}
+    Max \ Z & = & 2x_1 + 3x_2 \\
+    (0; 0) & = & 0 \\
+    (0; 30) & = & 90 \\
+    (60; 12) & = & 156 \\
+    (72; 4) & = & 152 \\
+    (72; 0) & = & 144 \\
+  \end{array}
+  &
+  \begin{array}{c c c}
+    (60; 12) & R1 & (+\infty)\\
+    660 & 720 & \\
+    \hline
+    (70; 4) & R2 & (0; 60) \\
+    500 & 600 & 1200 \\
+    \hline
+    (0; 30) & R3 & (67.06; 9.88)\\
+    300 & 600 & 635.28
+  \end{array}
+\end{array}
+\]
+
+\vspace{1cm}
+
+\[ \dfrac{6}{20} \leq \dfrac{\left|C1\right|}{\left|C2\right|} \leq \dfrac{8}{10} \]
+
+\[
+\begin{array}{c|c}
+  \begin{array}{c c c c c}
+    \dfrac{6}{20} & \leq & \dfrac{C1}{3} & \leq & \dfrac{8}{10} \\\\
+    \dfrac{18}{20} & \leq & C1 & \leq & \dfrac{24}{10} \\\\
+    0.9 & \leq & C1 & \leq & 2.4
+  \end{array}
+  &
+  \begin{array}{c c c c c}
+    \dfrac{6}{20} & \leq & \dfrac{2}{C2} & \leq & \dfrac{8}{10} \\\\
+    \dfrac{20}{8} & \leq & C2 &\leq & \dfrac{40}{6} \\\\
+    2.5 & \leq & C2 & \leq & 6.\overline{66} 
+  \end{array}
+\end{array}
+\]
+
+
+
+
+
+
+\newpage
+\section*{Ejercicio 2}
+\noindent Una empresa produce los alimentos A y B a partir de los ingredientes 1, 2 y 3. El precio de venta es de \$ $10.5$
+por cada caja de 1 kilo de A y de \$ $14.5$ por cada caja de 1 kilo de B. El costo del envase es de \$ $1.5$ por 
+caja. Cada uno de los alimentos contiene tres ingredientes, a continuación, se presenta la información relevante:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+  \hline
+  Alimento & Ingrediente 1 & Ingrediente 2 & Ingrediente 3 \\
+  \hline
+  A & 300gr & 400gr & 300gr \\
+  \hline
+  B & 250gr & 500gr & 250gr \\
+  \hline
+  Disponibilidad & 1000kg & 1400kg & 900jg \\
+  \hline
+  Costo & \$ 4 / kg & \$ 3 / kg & \$ 2 / kg \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent La demanda máxima es de 2000 cajas para el alimento A y de 1500 cajas para el alimento B. La capacidad de
+producción total es de 3200 cajas. Determinar la cantidad a producir de cada producto para maximizar la utilidad.
+
+\begin{itemize}
+  \item [a)] Formular el modelo y resolver utilizando el método gráfico.
+  \item [b)] Si pudiera conseguir una cantidad adicional de un ingrediente, ¿de cuál sería?, y ¿por qué?
+  \item [c)] Indique el rango de sensibilidad de los coeficientes objetivos
+  \item [d)] Indique el rango de sensibilidad de los recursos disponibles
+\end{itemize}
+
+\begin{center}
+\[
+\begin{array}{c|c|c}
+  \begin{array}{l}
+    \textbf{No Vinculante} \\
+    \textbf{Vinculante} \\
+    \textbf{No Vinculante} 
+  \end{array}
+  &
+  \begin{array}{l c r}
+    0.3x_1 + 0.25x_2 & \leq & 1000 \\
+    0.4x_1 + 0.5x_2 & \leq & 1400 \\
+    0.3x_1 + 0.25x_2 & \leq & 900 
+  \end{array}
+  &
+  \begin{array}{l}
+    (0; 4000) (3333.\overline{33}; 0) \\
+    (0; 2800) (3500; 0) \\
+    (0; 3600) (3000; 0) \\
+  \end{array}
+\end{array}
+\]
+\[\textbf{No Vinculante} \quad x_1 \leq 2000 \quad | \quad x_2 \leq 1500 \quad | \quad x_1 + x_2 \leq 3200 \quad \textbf{No Vinculante}\]
+\hspace{-0.75cm}\textbf{Vinculante}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+      axis lines = middle,
+      xlabel = {$x_1$},
+      ylabel = {$x_2$},
+      xtick={0,500,1000,1500,2000,2500,3000},
+      ytick={0,500,1000,1500,2000,2500,3000,3500},
+      ymin=0,
+      ymax=4000,
+      xmin=0,
+      xmax=3500,
+      grid=both,
+      width=15cm,
+      height=18cm,
+      legend pos=north east,
+    ]
+    
+    % Ingrediente 1
+    \addplot[
+      domain=0:3333.33,
+      samples=100,
+      color=blue,
+    ]
+    {(-0.3*x + 1000)/0.25};
+    \addlegendentry{Ingrediente 1}
+    
+    % Ingrediente 2
+    \addplot[
+      domain=0:3500,
+      samples=100,
+      color=red,
+    ]
+    {(-0.4*x + 1400)/0.5};
+    \addlegendentry{Ingrediente 2}
+    
+    % Ingrediente 3
+    \addplot[
+      domain=0:3000,
+      samples=100,
+      color=green,
+    ]
+    {(-0.3*x + 900)/0.25};
+    \addlegendentry{Ingrediente 3}
+    
+    % Capacidad de producción
+    \addplot[
+      domain=0:3200,
+      samples=100,
+      color=orange,
+    ]
+    {3200 - x};
+    \addlegendentry{Capacidad de producción}
+    
+    % Demanda máxima A (vertical line at x=2000)
+    \addplot[
+      color=purple,
+      thick,
+    ]
+    coordinates {(2000,0) (2000,4000)};
+    \addlegendentry{Demanda máxima A}
+    
+    % Demanda máxima B (horizontal line at y=1500)
+    \addplot[
+      color=brown,
+      thick,
+    ]
+    coordinates {(0,1500) (4000,1500)};
+    \addlegendentry{Demanda máxima B}
+    
+    % Sombra de la región factible
+    \fill[gray!30, opacity=0.5] (0,0) -- (0,1500) -- (1625,1500) -- (2000,1200) -- (2000,0) -- cycle;
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent Se podría conseguir cantidad adicional tanto del ingrediente 1 como del ingrediente 3, ya que ambos son recursos no vinculantes.
+Sin embargo, se recomienda conseguir más cantidad del ingrediente 1, ya que es el que tiene menor disponibilidad (1000 kg frente a 900 kg del ingrediente 3).
+
+\newpage
+\[
+\begin{array}{c|c}
+  \begin{array}{l c r}
+    Max \ Z & = & 6x_1 + 10x_2 \\\\
+    (0; 0) & = & 0 \\\\
+    (0; 1500) & = & 15000 \\\\
+    (1625; 1500) & = & 24750 \\\\
+    (2000; 1200) & = & 24000 \\\\
+    (2000; 0) & = & 12000
+  \end{array}
+  &
+  \begin{array}{c c c}
+    (1625; 1500) & R1 & (+\infty)\\
+    862.5 & 1000 & \\
+    \hline
+    (0; 1500) & R2 & (1750; 1500) \\
+    750 & 1400 & 1450 \\
+    \hline
+    (1625; 1500) & R3 & (+\infty)\\
+    862.5 & 900 & \\
+    \hline
+    (1625; 1500) & R4 & (+\infty)\\
+    862.5 & 2000 & \\
+    \hline
+    (2000; 1200) & R5 & (0; 2000)\\
+    1200 & 1500 & 2800
+  \end{array}
+\end{array}
+\]
+
+\vspace{1cm}
+
+\[ \dfrac{0.4}{0.5} \leq \dfrac{\left|C1\right|}{\left|C2\right|} \leq \dfrac{0.3}{0.25} \]
+
+\[
+\begin{array}{c|c}
+  \begin{array}{c c c c c}
+    \dfrac{0.4}{0.5} & \leq & \dfrac{C1}{10} & \leq & \dfrac{0.3}{0.25} \\\\
+    \dfrac{4}{0.5} & \leq & C1 & \leq & \dfrac{3}{0.25} \\\\
+    8 & \leq & C1 & \leq & 12
+  \end{array}
+  &
+  \begin{array}{c c c c c}
+    \dfrac{0.4}{0.5} & \leq & \dfrac{6}{C2} & \leq & \dfrac{0.3}{0.25} \\\\
+    \dfrac{1.5}{0.3} & \leq & C2 & \leq & \dfrac{3}{0.4} \\\\
+    5 & \leq & C2 & \leq & 7.5
+  \end{array}
+\end{array}
+\]
+
+\end{document}
