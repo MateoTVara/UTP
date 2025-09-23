@@ -10,6 +10,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -253,6 +254,43 @@ f(x) =
 \]
 
 \subsection*{Respuesta:} \noindent Si es continua en $x=1$
+
+
+
+
+\section*{Ejercicio 5}
+\noindent Para encender un tipo de motor se entrega un tipo de voltaje que se divide en tres partes, 
+voltaje de arranque, voltaje operación y voltaje de apagado, lo cual se modela según la función
+
+\[
+V(t) = 
+\left\{
+  \begin{array}{c l l}
+    A - 0.5t & \text{ , si } & 0 \leq t < 50 \\\\
+    3A - t & \text{ , si } & 50 \leq 5 < \textbf{\underline{100}} \\\\
+    220 - \dfrac{A}{5} & \text{ , si } & \textbf{\underline{100}} \leq t \leq 150
+  \end{array}
+\right.
+\]
+
+\noindent Donde $$V(t)$$ es el voltaje, en voltios, que ingresa al motor $t$ minutos después de entrar en
+funcionamiento. Según las normas técnicas el arranque debe ser de alto voltaje y el voltaje de operación 
+y apagado deben ser continuos en todo su dominio. ¿Cuál es el voltaje al inicio del funcionamiento?
+
+\[
+\begin{array}{l|c}
+  \begin{array}{l}
+    3A - 100 = 220 - \dfrac{A}{5} \\\\
+    3A - \dfrac{A}{5} = 320 \\\\
+    16A = 1600 \implies A = 100
+  \end{array}
+  &
+  \begin{array}{c}
+    100 - \dfrac{1}{2}(0) \\\\
+    \therefore \textbf{\underline{100}}
+  \end{array}
+\end{array}
+\]
 
 
 \end{document}
