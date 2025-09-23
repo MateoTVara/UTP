@@ -293,4 +293,42 @@ y apagado deben ser continuos en todo su dominio. ¿Cuál es el voltaje al inici
 \]
 
 
+
+
+\section*{Ejercicio 6}
+\noindent Para iniciar un tratamiento, se administra a un paciente un fármaco cuya concentración en sangre $C$,
+en mg/dL (miligramos por decilitro), se divide en tres fases, fase de absorción, fase de metabolización y fase 
+de eliminación, la cual se modela mediante la siguiente función
+
+\[
+C(t) = 
+\left\{
+  \begin{array}{c l l}
+    B - 0.2t & \text{ , si } & 0 \leq t < \textbf{\underline{40}} \\\\
+    2B - t & \text{ , si } & \textbf{\underline{40}} \leq t < 80 \\\\
+    80 - \dfrac{B}{2} & \text{ , si } & 80 \leq t \leq 120
+  \end{array}
+\right.
+\] \\
+
+\noindent Donde $t$ representa el tiempo en minutos después de ser administrado. Según los protocolos médicos,
+la concentración inicial debe ser moderada y las concentraciones durante las fases de absorción y metabolización
+deben ser continuas en todo su dominio. ¿Cuál es la concentración del fármaco al inicio del tratamiento?
+
+\[
+\begin{array}{l|c}
+  \begin{array}{l}
+    B + \dfrac{40}{5} = 2B - 40 \\\\
+    48 = B  
+  \end{array}
+  &
+  \begin{array}{c}
+    48 - \dfrac{1}{5}(0) \\\\
+    \therefore \textbf{\underline{48}}
+  \end{array}
+\end{array}
+\]
+
+
+
 \end{document}
