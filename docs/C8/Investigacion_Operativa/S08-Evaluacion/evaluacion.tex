@@ -1,0 +1,390 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{../assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Investigación Operativa} \\
+  \vspace{1cm}
+  \large \textbf{S08 - Evaluación}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 36373}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Alberto Andre Reyna Alcantara
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\section*{Ejercicio 1}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+            & A   & B   & Máximo \\ \hline
+  Calorías  & 100 & 150 & 2400   \\ \hline
+  Proteínas & 18  & 20  & 400    \\ \hline
+  Precio    & 150 & 210 &        \\ \hline
+  \end{tabular}
+  \caption{Variables y restricciones}
+  \label{tab:Ejercicio1}
+\end{table}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = middle,
+    width=15cm, height=12cm,
+    grid=both,
+    xmin = 0, xmax= 27,
+    ymin = 0, ymax = 22,
+    xtick = {1, 3,..., 27},
+    ytick = {1, 3,..., 22},
+    xticklabel pos=right,
+    yticklabel pos=right,
+    tick label style={font=\scriptsize}
+  ]
+
+  % Recta 100x + 150y = 2400
+  \addplot[red, very thick, domain=0:27] {-2/3*x + 16};
+  \addlegendentry{$100x + 150y \leq 2400$}
+  \addplot[red, mark=*, only marks, mark size=2pt, forget plot] coordinates {(14.28571, 7.14286) (11.42857, 9.71429)};
+  % Recta 100x + 150y = 2500
+  \addplot[red, thin, dashed, domain=0:27, forget plot] {-2/3*x + 50/3};
+  % Recta 100x + 150y = 2600
+  \addplot[red, thin, dashed,domain=0:27, forget plot] {-2/3*x + 52/3};
+
+  % Recta 18x + 20y = 400
+  \addplot[blue, very thick, domain=0:27] {-9/10*x + 20};
+  \addlegendentry{$18x + 20y \leq 400$}
+  \addplot[blue, mark=*, only marks, mark size=2pt, forget plot] coordinates {(19.28571, 3.14286) (21.42857, 1.71429)};
+  % Recta 18x + 20y = 410
+  \addplot[blue, thin, dashed, domain=0:27, forget plot] {-9/10*x + 41/2};
+  % Recta 18x + 20y = 420
+  \addplot[blue, thin, dashed, domain=0:27, forget plot] {-9/10*x + 21};
+
+  \addplot[purple, mark=*, only marks, mark size=2pt] coordinates {(17.14286, 4.57143)};
+
+  \fill[gray!30, opacity=0.7]
+    (0,0) --
+    (0,16) --
+    (17.14286, 4.57143) --
+    (22.22222, 0) --
+    cycle;
+
+  \addplot[black, mark=*, only marks, mark size=2pt] coordinates {
+    (0,0) 
+    (0,16) 
+    (22.22222, 0)
+  };
+
+  \node at (axis cs: 0,0) [above right] {\((0,0)\)};
+  \node at (axis cs: 0,16) [above right] {\((0,16)\)};
+  \node at (axis cs: 17.14,4.57) [above right] {\((17.14,4.57)\)};
+  \node at (axis cs: 22.22,0) [above right] {\((22.22,0)\)};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\[
+\begin{array}{c|c}
+  \begin{array}{l c r}
+    \text{Max} \, Z & = & 150x_1 + 210x_2 \\\\
+    (0,0) & = & 3360 \\\\
+    (0,16) & = & 3360 \\\\
+    (17.14,4.57) & = & 3531.43 \\\\
+    (22.\bar{22},0) & = & 3333.\bar{33}
+  \end{array}
+  &
+  \begin{array}{c}
+    \overset{\text{Precio Dual R1}\vphantom{\Big|}}{
+    \begin{array}{c c r c r}
+      100x_1 + 150x_2 & \leq & 2500 &&\\
+      Z' & = & 3642.8571 & \mid & 1.14  \\\\
+      100x_1 + 150x_2 & \leq & 2600 &&\\
+      Z' & = & 3754.2864 & \mid & 1.14  \\\\
+    \end{array}} \\
+    \hline \\
+    \overset{\text{Precio Dual R2}\vphantom{\Big|}}{
+    \begin{array}{c c r c r}
+      18x_1 + 20x_2 & \leq & 410 &&\\
+      Z' & = & 3552.8571 & \mid & 2.14  \\\\
+      18x_1 + 20x_2 & \leq & 420 &&\\
+      Z' & = & 3754.2864 & \mid & 2.14  \\\\
+    \end{array}}
+  \end{array}
+\end{array}
+\]
+
+\[\overset{\text{Rango de sensibilidad de recursos}\vphantom{\Big|}}{
+  \begin{array}{c|c}
+    \begin{array}{c c c}
+      100x_1 + 150x_2 & \leq & 2400 \\[6pt]
+      (0,20) & = & 3000 \\[6pt]
+      (24,0) & = & 2222.\bar{2} \\[6pt]
+      2222.\bar{2} & \leq \text{R1} \leq & 3000 \\[6pt]
+    \end{array}
+    &
+    \begin{array}{c c c}
+      18x_1 + 20x_2 & \leq & 400 \\[6pt]
+      (0,20) & = & 432 \\[6pt]
+      (22.\bar{2},0) & = & 320 \\[6pt]
+      320 & \leq \text{R2} \leq & 432 \\[6pt]
+    \end{array}
+  \end{array}
+}\]
+
+\vspace{1cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.5cm}
+
+\[\overset{\text{Rango de sensibilidad para los coeficientes de la función objetivo}\vphantom{\Big|}}{
+  \begin{array}{c|c}
+    \begin{array}{c c c c c}
+      m & = & \dfrac{\left|C1\right|}{\left|C2\right|} & = & \dfrac{150}{210} \\\\
+      \dfrac{10}{15} & < & \dfrac{\left|C1\right|}{210} & < & \dfrac{18}{20} \\\\
+      140 & < & \left|C1\right| & < & 189 \\\\
+    \end{array}
+    &
+    \begin{array}{c c c c c}
+      \dfrac{10}{15} & < & \dfrac{150}{\left|C2\right|} & < & \dfrac{18}{20} \\\\
+      & C2 & < & 225 & \\\\
+      & 166.\bar{6} & < & C2 & \\\\
+      166.\bar{6} & < & \left|C2\right| & < & 225 
+    \end{array}
+  \end{array}
+}\]
+
+\subsection*{Interpretaciones}
+\begin{itemize}
+  \item El precio dual de la restricción 1 (calorías) es 1.14, lo que significa que por cada unidad adicional de 
+  calorías permitida en la dieta, el valor óptimo de la función objetivo (Z) aumentará en aproximadamente 1.14 unidades 
+  monetarias, siempre y cuando las demás condiciones permanezcan constantes.
+  \item El precio dual de la restricción 2 (proteínas) es 2.14, lo que indica que por cada unidad adicional de proteínas 
+  permitida en la dieta, el valor óptimo de la función objetivo (Z) aumentará en aproximadamente 2.14 unidades monetarias
+  , manteniendo las demás condiciones constantes.
+  \item El rango de sensibilidad para los coeficientes de los recursos indica que:
+    \begin{itemize}
+      \item Para la restricción 1 (calorías), el coeficiente puede variar entre \(2222.\bar{2}\) y 3000 sin afectar la solución óptima actual.
+      \item Para la restricción 2 (proteínas), el coeficiente puede variar entre aproximadamente 320 y 432 sin afectar la solución óptima actual.
+    \end{itemize}
+  \item El rango de sensibilidad para los coeficientes de la función objetivo indica que:
+    \begin{itemize}
+      \item El coeficiente de la variable \(x_1\) (alimento A) puede variar entre 140 y 189 sin cambiar la solución óptima actual.
+      \item El coeficiente de la variable \(x_2\) (alimento B) puede variar entre \(166.\bar{6}\) y 225 sin cambiar la solución óptima actual.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+\newpage
+\section*{Ejercicio 2}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+            & A   & B  & Disponibilidad \\ \hline
+  Maquinas  & 5.5 & 15.5 & 750   \\ \hline
+  T. a Mano & 10   & 12  & 900     \\ \hline
+  Beneficio & 320 & 400 & \\ \hline
+  \end{tabular}
+  \caption{Variables y restricciones}
+  \label{tab:Ejercicio2}
+\end{table}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = middle,
+    width=15cm, height=12cm,
+    grid=both,
+    xmin = 0, xmax= 180,
+    ymin = 0, ymax = 100,
+    xtick = {0, 20,..., 180},
+    ytick = {0, 20,..., 100},
+    xticklabel pos=right,
+    yticklabel pos=right,
+    tick label style={font=\scriptsize}
+  ]
+
+  % Recta 5.5x + 15.5y = 750
+  \addplot[red, very thick, domain=0:180] {-(5.5/15.5)*x + 750/15.5};
+  \addlegendentry{$5.5x + 15.5y \leq 750$}
+  \addplot[red, mark=*, only marks, mark size=2pt, forget plot] coordinates {(42.13483, 39.88764) (28.65169, 51.1236)};
+  % Recta 5.5x + 15.5y = 850
+  \addplot[red, thin, dashed, domain=0:180, forget plot] {-(5.5/15.5)*x + 850/15.5};
+  % Recta 5.5x + 15.5y = 950
+  \addplot[red, thin, dashed, domain=0:180, forget plot] {-(5.5/15.5)*x + 950/15.5};
+
+  % Recta 10x + 12y = 900
+  \addplot[blue, very thick, domain=0:180] {-(10/12)*x + 75};
+  \addlegendentry{$10x + 12y \leq 900$}
+  \addplot[blue, mark=*, only marks, mark size=2pt, forget plot] coordinates {(73.03371, 22.47191) (90.44944, 16.29213)};
+  % Recta 10x + 12y = 1000
+  \addplot[blue, thin, dashed, domain=0:180, forget plot] {-(10/12)*x + 83.33333};
+  % Recta 10x + 12y = 1100
+  \addplot[blue, thin, dashed, domain=0:180, forget plot] {-(10/12)*x + 91.66667};
+
+  \addplot[purple, mark=*, only marks, mark size=2pt] coordinates {(55.61798, 28.65169)};
+
+  \fill[gray!30, opacity=0.7]
+    (0,0) --
+    (0,48.3871) --
+    (55.61798, 28.65169) --
+    (90,0) --
+    cycle;
+
+  \addplot[black, mark=*, only marks, mark size=2pt] coordinates {
+    (0,0) 
+    (0,48.3871) 
+    (90,0)
+  };
+
+  \node at (axis cs: 0,0) [above right] {\((0;0)\)};
+  \node at (axis cs: 0,48.39) [above right] {\((0;48.39)\)};
+  \node at (axis cs: 55.62,28.65) [above right] {\((55.62;28.65)\)};
+  \node at (axis cs: 90,0) [above right] {\((90;0)\)};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\[
+\begin{array}{c|c}
+  \begin{array}{l c r}
+    \text{Max} \, Z & = & 320x_1 + 400x_2 \\\\
+    (0,0) & = & 0 \\\\
+    (0,48.39) & = & 19354.84 \\\\
+    (55.62,28.65) & = & 29258.4296 \\\\
+    (90,0) & = & 28800
+  \end{array}
+  &
+  \begin{array}{c}
+    \overset{\text{Precio Dual R1}\vphantom{\Big|}}{
+    \begin{array}{c c r c r}
+      5.5x_1 + 15.5x_2 & \leq & 850 &&\\
+      Z' & = & 29438.2016 & \mid & 1.79  \\\\
+      5.5x_1 + 15.5x_2 & \leq & 950 &&\\
+      Z' & = & 29617.9808 & \mid & 1.79  \\\\
+    \end{array}} \\
+    \hline \\
+    \overset{\text{Precio Dual R2}\vphantom{\Big|}}{
+    \begin{array}{c c r c r}
+      10x_1 + 12x_2 & \leq & 1000 &&\\
+      Z' & = & 32359.5512 & \mid & 31.01  \\\\
+      10x_1 + 12x_2 & \leq & 1100 &&\\
+      Z' & = & 35460.6728 & \mid & 31.01  \\\\
+    \end{array}}
+  \end{array}
+\end{array}
+\]
+
+\[\overset{\text{Rango de sensibilidad de recursos}\vphantom{\Big|}}{
+  \begin{array}{c|c}
+    \begin{array}{c c c}
+      5.5x_1 + 15.5x_2 & \leq & 750 \\[6pt]
+      (0,75) & = & 1162.5 \\[6pt]
+      (90,0) & = & 495 \\[6pt]
+      495 & \leq \text{R1} \leq & 1162.5 \\[6pt]
+    \end{array}
+    &
+    \begin{array}{c c c}
+      10x_1 + 12x_2 & \leq & 900 \\[6pt]
+      (136.36,0) & = & 1363.6364 \\[6pt]
+      (0,48.39) & = & 580.68 \\[6pt]
+      580.68 & \leq \text{R2} \leq & 1363.6364 \\[6pt]
+    \end{array}
+  \end{array}
+}\]
+
+\vspace{1cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.5cm}
+
+\[\overset{\text{Rango de sensibilidad para los coeficientes de la función objetivo}\vphantom{\Big|}}{
+  \begin{array}{c|c}
+    \begin{array}{c c c c c}
+      m & = & \dfrac{\left|C1\right|}{\left|C2\right|} & = & \dfrac{320}{400} \\\\
+      \dfrac{5.5}{15.5} & < & \dfrac{\left|C1\right|}{400} & < & \dfrac{10}{12} \\\\
+      141.93 & < & \left|C1\right| & < & 333.\bar{3} \\\\
+    \end{array}
+    &
+    \begin{array}{c c c c c}
+      \dfrac{5.5}{15.5} & < & \dfrac{320}{\left|C2\right|} & < & \dfrac{10}{12} \\\\
+      & C2 & < & 901.\bar{81} & \\\\
+      & 384 & < & C2 & \\\\
+      384 & < & \left|C2\right| & < & 901.\bar{81} 
+    \end{array}
+  \end{array}
+}\]
+
+\subsection*{Interpretaciones}
+\begin{itemize}
+  \item El precio dual de la restricción 1 (máquinas) es 1.79, lo que significa que por cada unidad adicional de 
+  tiempo de máquina permitida, el valor óptimo de la función objetivo (Z) aumentará en aproximadamente 1.79 unidades 
+  monetarias, siempre y cuando las demás condiciones permanezcan constantes.
+  \item El precio dual de la restricción 2 (tiempo a mano) es 31.01, lo que indica que por cada unidad adicional de tiempo
+  a mano permitida, el valor óptimo de la función objetivo (Z) aumentará en aproximadamente 31.01 unidades monetarias,
+  manteniendo las demás condiciones constantes.
+  \item El rango de sensibilidad para los coeficientes de los recursos indica que:
+    \begin{itemize}
+      \item Para la restricción 1 (máquinas), el coeficiente puede variar entre 495 y 1162.5 sin afectar la solución óptima actual.
+      \item Para la restricción 2 (tiempo a mano), el coeficiente puede variar entre aproximadamente 580.68 y 1363.64 sin afectar la solución óptima actual.
+    \end{itemize}
+  \item El rango de sensibilidad para los coeficientes de la función objetivo indica que:
+    \begin{itemize}
+      \item El coeficiente de la variable \(x_1\) (producto A) puede variar entre 141.93 y 333.33 sin cambiar la solución óptima actual.
+      \item El coeficiente de la variable \(x_2\) (producto B) puede variar entre 384 y 901.81 sin cambiar la solución óptima actual.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\section*{Recursos y créditos}
+
+\begin{itemize}
+    \item \textbf{Código fuente:} \href{https://github.com/MateoTVara/UTP/tree/main/docs/C8/Investigacion_Operativa/S08-Evaluacion}{Repositorio GitHub - Investigación Operativa}
+    \item \textbf{Carátula por:} \href{https://github.com/1nfinit0}{1nfinit0 en GitHub}
+\end{itemize}
+
+
+
+
+\end{document}
