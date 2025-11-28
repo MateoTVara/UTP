@@ -407,6 +407,121 @@ de capacidad, para lo cual usted debe realizar lo siguiente:
   \end{center}
 \end{itemize}
 
+
+
+
+
+\newpage
+\section*{Actividad 5}
+\noindent Mediante el uso de la derivada calcule el costo mínimo del envase diseñado en la parte (c) de la pregunta 3 \\
+
+Función de costo total:
+
+\[
+  C(r) = \dfrac{1}{100} \cdot 2\pi r \cdot \dfrac{500}{\pi r^2} +
+  \dfrac{7}{100} \cdot 2\pi r^2
+\]
+
+\[
+  C(r) = \dfrac{10}{r} + \dfrac{7\pi r^2}{50}
+\]
+
+Derivando la función:
+
+\[
+  C'(r) = \left(\dfrac{10}{r}\right)' + \left(\dfrac{7\pi r^2}{50}\right)'
+\]
+
+\[
+  C'(r) = \dfrac{10' \cdot r - 10 \cdot r'}{r^2} +
+          \dfrac{(7\pi r^2)' \cdot 50 - (7\pi r^2) \cdot 50'}{50^2}
+\]
+
+\[
+  C'(r) = \dfrac{-10}{r^2} + \dfrac{14\pi r}{50}
+\]
+
+Igualando a cero para encontrar los puntos críticos:
+
+\[
+  \dfrac{-10}{r^2} + \dfrac{14\pi r}{50} = 0
+\]
+
+\[
+  \dfrac{14\pi r}{50} = \dfrac{10}{r^2}
+\]
+
+\[
+  r^3 = \dfrac{500}{14\pi}
+\]
+
+\[
+  r \approx 2.24852
+\]
+
+Calculando el costo mínimo:
+
+\[
+  C(2.24852) = \dfrac{10}{2.24852} + \dfrac{7\pi (2.24852)^2}{50} \approx 6.67104
+\]
+
+
+
+
+
+\newpage
+\section*{Actividad 6}
+\noindent Mediante el uso de la derivada calcule el costo mínimo del envase diseñado en la pregunta 4,
+donde debe asegurarse que su diseño permita que la función presente valor crítico. \\
+
+Función de costo total:
+
+\[
+  C(r) = 0.06\pi r^2 + \dfrac{108}{r}
+\]
+
+Derivando la función:
+
+\[
+  C'(r) = (0.06\pi r^2)' + \left(\dfrac{108}{r}\right)'
+\]
+
+\[
+  C'(r) = 0.12\pi r - \dfrac{108}{r^2}
+\]
+
+Igualando a cero para encontrar los puntos críticos:
+
+\[
+  0.12\pi r - \dfrac{108}{r^2} = 0
+\]
+
+\[
+  0.12\pi r = \dfrac{108}{r^2}
+\]
+
+\[
+  r^3 = \dfrac{900}{\pi} \implies r \approx 6.59221
+\]
+
+Segunda derivada:
+\[
+  C''(r) = (0.12\pi r)' - \left(\dfrac{108}{r^2}\right)'
+\]
+
+\[
+  C''(r) = 0.12\pi + \dfrac{216}{r^3} \implies C''(6.59221) = 0.36\pi > 0
+\]
+
+Calculando el costo mínimo:
+
+\[
+  C(6.59221) = 0.06\pi (6.59221)^2 + \dfrac{108}{6.59221} \approx 24.57447
+\]
+
+
+
+
 \newpage
 \section*{Recursos y créditos}
 \begin{itemize}
