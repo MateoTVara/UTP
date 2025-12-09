@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+%===============================
+%
+%          📦 Paquetes
+%
+%===============================
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{xcolor} % added for \fcolorbox
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{
+  \vspace{2cm}
+  \pagenumbering{gobble}
+  \includegraphics[width=5cm]{../assets/logo-utp.png} \\
+  \vspace{1cm}
+  \textbf{Universidad Tecnológica del Perú} \\
+  \vspace{2cm}
+  \textbf{Investigación Operativa} \\
+  \vspace{1cm}
+  \large \textbf{S12 - Evaluación}
+}
+\author{
+  \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
+  \texttt{Sección 36373}
+}
+
+
+
+\begin{document}
+\maketitle
+\begin{center}
+
+  Docente: Alberto Andre Reyna Alcantara
+
+\end{center}
+
+%======================================
+%
+%          📚 Inicio del documento
+%
+%======================================
+
+\newpage
+\section*{Caso 1 - Programación multiobjetivo y entera}
+
+\noindent Una fábrica produce dos tipos de sillas: Ejecutiva y Económica. Cada silla ejecutiva deja una utilidad de 
+S/ 120, y cada silla económica de S/ 80. Para producir una silla ejecutiva se necesitan 3 horas de mano de obra y 
+2m² de madera, mientras que una económica requiere 2 horas y 1m². \\
+\noindent Se dispone de 120 horas de trabajo y 90m² de madera. La empresa tiene las siguientes metas en orden de prioridad:
+
+\begin{itemize}
+  \item[] \textbf{Meta 1}: Alcanzar una utilidad mínima de S/ 4000.
+  \item[] \textbf{Meta 2}: Usar al menos el 95\% de las horas disponibles.
+  \item[] \textbf{Meta 3}: No usar más del 90\% de la madera disponible. 
+\end{itemize}
+
+\noindent Además la producción debe ser en unidades enteras.
+
+\subsection*{Modelo en Lingo}
+
+\begin{center}
+  \setlength{\fboxsep}{4pt}  % padding
+  \setlength{\fboxrule}{1pt} % border thickness
+
+  \fbox{\includegraphics[width=0.8\textwidth]{assets/case1-model.PNG}}
+\end{center}
+
+\noindent Se puede notar que la solución cambia al forzar enteros:
+
+\begin{center}
+  \setlength{\fboxsep}{4pt}  % padding
+  \setlength{\fboxrule}{1pt} % border thickness
+
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\linewidth]{assets/case1-results-noentero.PNG}}
+    \\[4pt]\small Modelo Sin Enteros
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\linewidth]{assets/case1-results-entero.PNG}}
+    \\[4pt]\small Modelo Con Enteros
+  \end{minipage}
+\end{center}
+
+\newpage
+\subsection*{Comprobamos las metas}
+
+\noindent \textbf{Variables de decisión:} \\
+\begin{center}
+  \noindent A = Sillas Ejecutivas producidas = 26 \\
+  \noindent B = Sillas Económicas producidas = 19 \\
+\end{center}
+
+\[
+  120A + 80B = 120(26) + 80(19) = 3120 + 1520 = 4640 \quad \text{(Meta 1 cumplida)}
+\]
+\[
+  3A + 2B = 3(26) + 2(19) = 78 + 38 = 116 \quad \text{(Meta 2 cumplida, 116/120 = 96.67\%)}
+\]
+\[
+  2A + B = 2(26) + 19 = 52 + 19 = 71 \quad \text{(Meta 3 cumplida, 71/90 = 78.89\%)}
+\]
+
+\subsection*{Conclusiones}
+\begin{itemize}
+  \item La producción óptima es de 26 sillas ejecutivas y 19 sillas económicas.
+  \item Se cumplen todas las metas establecidas por la empresa.
+  \item La producción en unidades enteras afecta la solución óptima, pero aún así se logran cumplir las metas.
+\end{itemize}
+
+
+
+
+
+\newpage
+\subsection*{Caso 2 - Programación Binaria y dinámica}
+
+
+
+\end{document}
