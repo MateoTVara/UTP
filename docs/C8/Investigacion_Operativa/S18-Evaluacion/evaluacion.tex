@@ -27,7 +27,7 @@
   \vspace{2cm}
   \textbf{Investigación Operativa} \\
   \vspace{1cm}
-  \large \textbf{S12 - Evaluación}
+  \large \textbf{S18 - Evaluación Final}
 }
 \author{
   \textbf{Torres Vara, Mateo Nicolas} - \texttt{U24308542} \\
@@ -125,7 +125,81 @@ S/ 120, y cada silla económica de S/ 80. Para producir una silla ejecutiva se n
 
 \newpage
 \subsection*{Caso 2 - Programación Binaria y dinámica}
+\noindent Una empresa debe elegir entre 5 proyectos posibles. Cada proyecto tiene un costo y un retorno estimado, 
+pero algunos proyectos son excluyentes o dependientes entre sí. Se dispone de un presupuesto máximo de S/ 10,000.
 
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Proyecto} & \textbf{Costo (S/)} & \textbf{Retorno (S/)} \\
+\midrule
+P1 & 3,000 & 5,000 \\
+P2 & 4,000 & 7,000 \\
+P3 & 2,000 & 3,000 \\
+P4 & 5,000 & 9,000 \\
+P5 & 1,000 & 1,500 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Reglas:}
+\begin{itemize}
+  \item[•] Si se elige P1, no se puede elegir P3.
+  \item[•] P2 y P4 no pueden ser elegidos simultáneamente.
+  \item[•] P5 solo puede ser elegido si se elige P2.
+\end{itemize}
+
+\noindent Se quiere maximizar el retorno total sin exceder el presupuesto.
+
+
+
+\subsection*{Modelo en Lingo y Resultados}
+\begin{center}
+  \setlength{\fboxsep}{4pt}  % padding
+  \setlength{\fboxrule}{1pt} % border thickness
+
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\linewidth]{assets/case2-binarymodel.PNG}}
+    \\[4pt]\small Modelo en Lingo
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.45\textwidth}
+    \centering
+    \fbox{\includegraphics[width=\linewidth]{assets/case2-binaryresults.PNG}}
+    \\[4pt]\small Resultados
+  \end{minipage}
+\end{center}
+
+
+
+\subsection*{Comprobación mediante programación dinámica}
+
+\begin{center}
+  \setlength{\fboxsep}{4pt}  % padding
+  \setlength{\fboxrule}{1pt} % border thickness
+
+  \fbox{\includegraphics[width=0.8\textwidth]{assets/case2-dinamic.png}}
+\end{center}
+
+
+
+\subsection*{Conclusiones}
+\begin{itemize}
+  \item La selección óptima de proyectos es P1 y P4, con un retorno total de S/ 14000.
+  \item Se cumplen todas las restricciones de exclusión y dependencia entre proyectos.
+  \item La programación binaria y dinámica son herramientas efectivas para resolver problemas de selección de proyectos con restricciones complejas.
+\end{itemize}
+
+
+\vspace{10cm}
+
+
+\section*{Recursos y créditos}
+
+\begin{itemize}
+    \item \textbf{Código fuente:} \href{https://github.com/MateoTVara/UTP/blob/main/docs/C8/Investigacion_Operativa/S18-Evaluacion/evaluacion.pdf}{Repositorio GitHub - Investigación Operativa}
+    \item \textbf{Carátula por:} \href{https://github.com/1nfinit0}{1nfinit0 en GitHub}
+\end{itemize}
 
 
 \end{document}
