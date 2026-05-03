@@ -1,0 +1,54 @@
+\begin{multicols*}{2}
+
+\section*{Ejercicio 1}
+\noindent\textbf{Determine si las siguientes integrales convergen o divergen}
+
+\subsection*{1.1}
+\[
+  \int_{3}^{7} \frac{2}{x-3} dx
+\]
+
+\begin{gather*}
+  x \in \left]3, 7\right] \\
+  \lim_{a \to 3^+} \int_{a}^{7} \frac{2}{x-3} dx \\
+  \lim_{a \to 3^+} 2 \ln|x-3| \Big|_{a}^{7} \\
+  \lim_{a \to 3^+} 2 (\ln|4| - \ln|a-3|) \\
+  \lim_{a \to 3^+} 2 (\ln|4| - (-\infty)) \\
+  +\infty
+\end{gather*}
+\noindent La integral diverge, ya que el límite es infinito.
+
+
+\subsection*{1.2}
+\[
+  \int_{0}^{+\infty} 5e^{-2x} dx
+\]
+
+\begin{gather*}
+  \lim_{a \to \infty^+} \int_{0}^{a} 5e^{-2x} dx \\
+  \left[ \frac{5e^{-2x}}{-2} \right]_{0}^{a} \\
+  \left[ \frac{5e^{-2a}}{-2} - \left(\frac{5e^{0}}{-2}\right) \right] \\
+  \left[ -\frac{5e^{-2a}}{2} + \frac{5}{2} \right] \\
+  \lim_{a \to \infty^+}  \left( 0 + \frac{5}{2} \right)
+  \frac{5}{2}
+\end{gather*}
+\noindent La integral converge, ya que el límite es un valor finito.
+
+
+
+\subsection*{1.3}
+\[
+  \int_{0}^{+\infty} 3xe^{-x^2} dx
+\]
+
+\begin{gather*}
+  \int_{0}^{+\infty} 3xe^{-x^2} dx \\
+  u = -x^2 \\
+  du = -2x dx \\
+  \int_{0}^{+\infty} 3xe^{-x^2} dx \\
+  \int_{0}^{+\infty} -\frac{3}{2} e^{u} du \\
+  \left[ -\frac{3}{2} e^{u} \right]_{0}^{+\infty} \\
+  \left[ -\frac{3}{2} e^{-\infty} + \frac{3}{2} e^{0} \right] \\
+  \left[ 0 + \frac{3}{2} \right] \\
+  \frac{3}{2}
+\end{gather*}

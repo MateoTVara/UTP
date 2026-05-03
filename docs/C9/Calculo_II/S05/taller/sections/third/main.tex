@@ -1,0 +1,48 @@
+\section*{Ejercicio 3}
+\noindent\textbf{Usando la definición de funciń Beta evalúe las siguientes integrales}
+
+\subsection*{3.1}
+\[
+  \int_{0}^{5} \frac{x^5}{\sqrt{5-x}} dx
+\]
+
+\begin{gather*}
+  x \in \left[0, 5\right[ \\
+  \frac{x}{5} = t \\
+  x = 5t \\
+  dx = 5 dt \\
+  \int_{0}^{5} (5t)^5 \cdot (5 - x)^{-\frac{1}{2}} \cdot 5 dt \\
+  \int_{0}^{1} 5^5 \cdot t^5 \cdot (5 - 5t)^{-\frac{1}{2}} \cdot 5 dt \\
+  5^5 \cdot 5^1 \int_{0}^{1} t^5 (5 - 5t)^{-\frac{1}{2}} \cdot dt \\
+  5^6 \int_{0}^{1} t^5 \cdot 5^{-\frac{1}{2}} \cdot (1 - t)^{-\frac{1}{2}} \cdot dt \\
+  5^{\frac{11}{2}} \int_{0}^{1} t^5 (1 - t)^{-\frac{1}{2}} dt \\
+  5^{\frac{11}{2}} \cdot B(5 + 1, -\frac{1}{2} + 1) \\
+  5^{\frac{11}{2}} \cdot B(6, \frac{1}{2}) \\
+  5^{\frac{11}{2}} \cdot \frac{\Gamma(6) \cdot \Gamma(\frac{1}{2})}{\Gamma(\frac{13}{2})} \\
+  \frac{5^{\frac{11}{2}} \cdot 5! \cdot \sqrt{\pi}}{\frac{11}{2} \cdot \frac{9}{2} \cdot \frac{7}{2} \cdot \frac{5}{2} \cdot \frac{3}{2} \cdot \frac{1}{2} \sqrt{\pi}} \\
+\end{gather*}
+
+
+
+\subsection*{3.2}
+\[
+  \int_{0}^{8} \frac{x^3}{\sqrt{8-x}} dx
+\]
+
+\begin{gather*}
+  x \in \left[0, 8\right[ \\
+  \frac{x}{8} = t \\
+  x = 8t \\
+  dx = 8 dt \\
+  \int_{0}^{8} (8t)^3 \cdot (8 - x)^{-\frac{1}{2}} \cdot 8 dt \\
+  \int_{0}^{1} 8^3 \cdot t^3 \cdot (8 - 8t)^{-\frac{1}{2}} \cdot 8 dt \\
+  8^3 \cdot 8^1 \int_{0}^{1} t^3 (8 - 8t)^{-\frac{1}{2}} \cdot dt \\
+  8^4 \int_{0}^{1} t^3 \cdot 8^{-\frac{1}{2}} \cdot (1 - t)^{-\frac{1}{2}} \cdot dt \\
+  8^{\frac{7}{2}} \int_{0}^{1} t^3 (1 - t)^{-\frac{1}{2}} dt \\
+  8^{\frac{7}{2}} \cdot B(3 + 1, -\frac{1}{2} + 1) \\
+  8^{\frac{7}{2}} \cdot B(4, \frac{1}{2}) \\
+  8^{\frac{7}{2}} \cdot \frac{\Gamma(4) \cdot \Gamma(\frac{1}{2})}{\Gamma(\frac{9}{2})} \\
+  \frac{8^{\frac{7}{2}} \cdot 3! \cdot \sqrt{\pi}}{\frac{7}{2} \cdot \frac{5}{2} \cdot \frac{3}{2} \cdot \frac{1}{2} \sqrt{\pi}} \\
+\end{gather*}
+
+\end{multicols*}
