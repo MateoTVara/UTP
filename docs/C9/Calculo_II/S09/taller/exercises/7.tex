@@ -1,0 +1,18 @@
+\section*{Ejercicio 7}
+\noindent Calcule la longitud de arco de la curva \(y = \frac{1}{4} x^\frac{3}{2}\), desde \(x = 0 \) hasta \(x = 14 \). Considere que cada longitud del plano cartesiano mide \(1\)m.
+
+\begin{gather*}
+  y = \frac{1}{4} \cdot x^\frac{3}{2}; \quad x \in [0, 14] \\
+  f'(x) = \frac{1}{4} \cdot \frac{3}{2} \cdot x^\frac{1}{2} = \frac{3}{8} \cdot x^\frac{1}{2} \Leftrightarrow %
+    \left( f'(x) \right)^2 = \frac{9}{64} x \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  L = \int_0^{14} \sqrt{1 + \frac{9}{64} x} \, dx \\
+  u = 1 + \frac{9}{64} x \Leftrightarrow %
+    du = \frac{9}{64} dx \Leftrightarrow %
+    dx = \frac{64}{9} du \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  L = \frac{64}{9} \cdot \int_{1}^{\frac{95}{32}} u^\frac{1}{2} \, du \\
+  L = \frac{64}{9} \cdot \frac{\frac{u^\frac{3}{2}}{1}}{\frac{3}{2}} \Bigg|_{1}^{\frac{95}{32}} \\
+  L = \frac{64}{9} \cdot \frac{2}{3} \cdot \left( \frac{95}{32}^\frac{3}{2} - 1^\frac{3}{2} \right) \\
+  L \approx 19.5 \, m
+\end{gather*}

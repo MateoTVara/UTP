@@ -1,0 +1,19 @@
+\section*{Ejercicio 8}
+\noindent Calcule la longitud de arco de la curva \(y = 6x^\frac{3}{2}\), desde \(x = 0\) hasta \(x = 10\). Considere que cada longitud
+del plano cartesiano mide 1 m.
+
+\begin{gather*}
+  y = 6x^\frac{3}{2}; \quad x \in [0, 10] \\
+  f'(x) = 6 \cdot \frac{3}{2} \cdot x^\frac{1}{2} \Leftrightarrow %
+    \left( f'(x) \right)^2 = 81 x \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  L = \int_{0}^{10} \sqrt{1 + 81 x} \, dx \\
+  u = 1 + 81 x \Leftrightarrow %
+    du = 81 dx \Leftrightarrow %
+    dx = \frac{1}{81} du \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  L = \frac{1}{81} \cdot \int_{1}^{811} u^\frac{1}{2} \, du \\
+  L = \frac{1}{81} \cdot \frac{\frac{u^\frac{3}{2}}{1}}{\frac{3}{2}} \Bigg|_{1}^{811} \\
+  L = \frac{1}{81} \cdot \frac{2}{3} \cdot \left( 811^\frac{3}{2} - 1^\frac{3}{2} \right) \\
+  L \approx 190.08 \, m
+\end{gather*}
