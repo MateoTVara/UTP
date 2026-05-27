@@ -1,0 +1,27 @@
+\section*{Ejercicio 6}
+\noindent Sombree y determine el área de la región interior a la curva \(r = 8 - 8\cos(\theta)\) (cardioide) y exterior a la curva \(r = -12\cos(\theta)\) , de la pregunta anterior.
+
+\begin{gather*}
+  B / 2 = \frac{1}{2} \int_{0}^{\pi} (8 - 8\cos(\theta))^2 \, d\theta %
+    = \frac{1}{2} \int_{0}^{\pi} 64 + 64\cos^2(\theta) - 128\cos(\theta) \, d\theta %
+    = 32 \int_{0}^{\pi} 1 + \cos^2(\theta) - 2\cos(\theta) \, d\theta \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  a = \int_{0}^{\pi} 1 \, d\theta \Leftrightarrow %
+    b = \int_{0}^{\pi} \cos^2(\theta) \, d\theta \Leftrightarrow %
+    c = \int_{0}^{\pi} -2\cos(\theta) \, d\theta \\
+  a = \int_{0}^{\pi} 1 \, d\theta = \theta \big|_{0}^{\pi} = \pi \Leftrightarrow %
+    c = \int_{0}^{\pi} -2\cos(\theta) \, d\theta = -2 \sin(\theta) \big|_{0}^{\pi} = 0 \\
+  b = \int_{0}^{\pi} \cos^2(\theta) \, d\theta %
+    = \frac{1}{2} \int_{0}^{\pi} 1 + \cos(2\theta) \, d\theta %
+    = \frac{1}{2} \left(\theta + \frac{\sin(2\theta)}{2}\right) \bigg|_{0}^{\pi} %
+    = \frac{1}{2} \left(\pi + \frac{\sin(2\pi)}{2} - 0 - \frac{\sin(0)}{2}\right) %
+    = \frac{\pi}{2} \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  B / 2 = 32 \left(\pi + \frac{\pi}{2} + 0\right) = 32 \cdot \frac{3\pi}{2} = 48\pi \\
+  B = 96\pi \\
+  B - A = 96\pi - 72\pi = 24\pi
+\end{gather*}
+
+\noindent El área de la región interior a la curva \(r = 8 - 8\cos(\theta)\) y exterior a la curva \(r = -12\cos(\theta)\) es \(24\pi\) unidades cuadradas.
+
+\newpage

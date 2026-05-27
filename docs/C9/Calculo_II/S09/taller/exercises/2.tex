@@ -1,0 +1,31 @@
+\section*{Ejercicio 2}
+\noindent Se tiene una lámina cuya forma está dada por la región limitada por la función \(f(x) = -x^2 + 20x\)y el eje
+\(X\). Considere que cada unidad del plano cartesiano mide \(1\) cm.
+\begin{itemize}
+  \item Si la lámina tiene una densidad uniforme de \(\rho = 18 \frac{g}{cm^2}\), calcule la masa de la lámina.
+  \item Determine las coordenadas del centroide.
+\end{itemize}
+
+\begin{gather*}
+  f(x) = -x^2 + 20x; \quad x \in [0, 20]; \quad \rho = 18 \frac{g}{cm^2} \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  A = \int_{0}^{20} 20x - x^2 dx %
+    = \left(\frac{20x^2}{2} - \frac{x^3}{3}\right)\bigg|_{0}^{20} %
+    = \left(\frac{20 \cdot 20^2}{2} - \frac{20^3}{3}\right) %
+    = 1333,33 cm^2 \\
+  m = \rho \cdot A = 18 \cdot 1333,33 = 24000 g \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  1333,\overline{3}\bar{x} = \int_{0}^{20} x \cdot (20x - x^2) dx %
+    = \int_{0}^{20} 20x^2 - x^3 dx %
+    = \left(\frac{20x^3}{3} - \frac{x^4}{4}\right)\bigg|_{0}^{20} %
+    = 13333,\overline{3} \\
+  \bar{x} = \frac{13333,\overline{3}}{1333,\overline{3}} = 10 \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  2666,\overline{6}\bar{y} = \int_{0}^{20} (20x - x^2)^2 dx %
+    = \int_{0}^{20} 400^2 + x^4 - 40x^3 dx %
+    = \left(\frac{400x^3}{3} + \frac{x^5}{5} - \frac{40x^4}{4}\right) \bigg|_{0}^{20} %
+    = 106666,6667 \\
+  \bar{y} = \frac{106666,6667}{2666,\overline{6}} = 40
+\end{gather*}
+
+\noindent El centroide de la lámina se encuentra en el punto \((10, 40)\) y la masa de la lámina es \(24000\) g.

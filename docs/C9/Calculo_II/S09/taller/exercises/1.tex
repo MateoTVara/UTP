@@ -1,0 +1,32 @@
+\section*{Ejercicio 1}
+\noindent Se tiene una lámina cuya forma está dada por la región limitada por la función \(f(x) = -x^2 + 12x\) y el eje
+\(X\). Considere que cada unidad del plano cartesiano mide \(1\) cm.
+\begin{itemize}
+  \item Si la lámina tiene una densidad uniforme de \(\rho = 25 \frac{g}{cm^2}\) calcule la masa de la lámina.
+  \item Determine las coordenadas del centroide.
+\end{itemize}
+
+\begin{gather*}
+  f(x) = -x^2 + 12x; \quad x \in [0, 12]; \quad \rho = 25 \frac{g}{cm^2} \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  A = \int_{0}^{12} 12x - x^2 dx %
+    = \left(\frac{12x^2}{2} - \frac{x^3}{3}\right)\bigg|_{0}^{12} %
+    = \left(\frac{12 \cdot 12^2}{2} - \frac{12^3}{3}\right) %
+    = 288 cm^2 \\
+  m = \rho \cdot A = 25 \cdot 288 = 7200 g \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  288\bar{x} = \int_{0}^{12} x \cdot \left(12x - x^2\right) dx %
+    = \int_{0}^{12} 12x^2 - x^3 dx %
+    = \left(\frac{12x^3}{3} - \frac{x^4}{4}\right)\bigg|_{0}^{12} %
+    = \left(\frac{12 \cdot 12^3}{3} - \frac{12^4}{4}\right)
+    = 1728 \\
+  \bar{x} = \frac{1728}{288} = 6 \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  576\bar{y} = \int_{0}^{12} \left(12x - x^2\right)^2 dx %
+    = \int_{0}^{12} 144x^2 - x^4 - 24x^3 dx %
+    = \frac{144 \cdot 12^3}{3} + \frac{12^5}{5} - \frac{24 \cdot 12^4}{4} %
+    = 8294,4  \\
+  \bar{y} = \frac{8294,4}{576} = 14.4
+\end{gather*}
+
+\noindent El centroide de la lámina se encuentra en el punto \((6, 14.4)\) y la masa de la lámina es \(7200\) g.

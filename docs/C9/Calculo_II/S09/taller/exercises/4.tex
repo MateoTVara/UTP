@@ -1,0 +1,28 @@
+\section*{Ejercicio 4}
+\noindent Sombree y determine el área de la región interior a la curva \(r = 6 - 6 \cos(\theta)\) (cardioide) y exterior a la
+curva \(r = -8\cos(\theta)\) , de la pregunta anterior.
+
+\begin{gather*}
+  B / 2 = \frac{1}{2} \int_{0}^{\pi} \left(6 - 6\cos(\theta)\right)^2 d\theta %
+    = \frac{1}{2} \int_{0}^{\pi} 36 + 36\cos^2(\theta) - 72\cos(\theta) d\theta %
+    = 18 \int_{0}^{\pi} 1 + \cos^2(\theta) - 2\cos(\theta) d\theta \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  a = \int_{0}^{\pi} 1 \, d\theta \Leftrightarrow %
+    b = \int_{0}^{\pi} \cos^2(\theta) \, d\theta \Leftrightarrow %
+    c = \int_{0}^{\pi} -2\cos(\theta) \, d\theta \\
+  a = \int_{0}^{\pi} 1 \, d\theta = \theta \big|_{0}^{\pi} = \pi \Leftrightarrow %
+    c = \int_{0}^{\pi} -2\cos(\theta) \, d\theta = -2 \sin(\theta) \big|_{0}^{\pi} = 0 \\
+  b = \int_{0}^{\pi} \cos^2(\theta) \, d\theta %
+    = \int_{0}^{\pi} \frac{1 + \cos(2\theta)}{2} d\theta %
+    = \frac{1}{2} \int_{0}^{\pi} 1 + \cos(2\theta) d\theta %
+    = \frac{1}{2} \left(\theta + \frac{\sin(2\theta)}{2}\right) \bigg|_{0}^{\pi} %
+    = \frac{\pi}{2} \\
+  \rule{0.5\textwidth}{0.4pt} \\
+  B / 2 = 18 \left(\pi + \frac{\pi}{2} + 0\right) = 27 \pi \\
+  B = 54 \pi \\
+  B - A = 54 \pi - 32 \pi = 22 \pi
+\end{gather*}
+
+\noindent El área de la región interior a la curva \(r = 6 - 6 \cos(\theta)\) y exterior a la curva \(r = -8\cos(\theta)\) es \(22 \pi\) unidades cuadradas.
+
+\newpage
