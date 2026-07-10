@@ -14,6 +14,7 @@
     {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
+          tex-fmt
           (texliveBasic.withPackages (
             ps: with ps; [
               latexmk
@@ -22,7 +23,9 @@
               xcolor
               amsmath
               hyperref
-              booktabs
+              pgf
+              pgfplots
+              tikz-cd
             ]
           ))
         ];

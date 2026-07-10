@@ -57,3 +57,25 @@
     \end{array}
   \]
 \end{center}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel = \(x\),
+        ylabel = \(y\),
+        xmin = 0, xmax=14,
+        ymin = 0, ymax=12,
+        grid = major,
+        grid style = dashed,
+      ]
+
+      \addplot[
+        domain=0:13,
+        samples=100,
+        color=blue,
+        fill=blue!20,
+      ]
+      {143/13 - (11/13)*x} \closedcycle;
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
