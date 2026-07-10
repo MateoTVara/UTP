@@ -10,17 +10,10 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      # tex = pkgs.texliveBasic.withPackages (
-      #   ps: with ps; [
-      #     latexmk
-      #     babel
-      #   ]
-      # );
     in
     {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          # tex
           (texliveBasic.withPackages (
             ps: with ps; [
               latexmk
