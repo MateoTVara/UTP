@@ -1,14 +1,19 @@
 \section*{Pregunta 2}
-\noindent El primer prototipo debe ser diseñada como un sólido que se forma en el primer octante con vértices en \(P(0,0,0)\), \(A(13,0,0)\), \(B(0,11,0)\) y \(C(0,0,16)\)
+\noindent El primer prototipo debe ser diseñada como un sólido que se
+forma en el primer octante con vértices en \(P(0,0,0)\),
+\(A(13,0,0)\), \(B(0,11,0)\) y \(C(0,0,16)\)
 
 \begin{itemize}
-  \item[a.] Represente una función de varias variables que modele la superficie inclinada del sólido.
-
-  \item[c.] Mediante el uso de las la integral doble calcule el volumen del sólido.
+  \item[a.] Represente una función de varias variables que modele la
+    superficie inclinada del sólido.
+  \item[c.] Mediante el uso de las la integral doble calcule el
+    volumen del sólido.
+  \item[e.] Mediante el uso de unaplataforma digital presente el prototipo.
 \end{itemize}
+\vspace{-0.5cm}
 
-\subsection*{a.- Represente una función de varias variables que modele la superficie inclinada del sólido}
-
+\subsection*{a.- Represente una función de varias variables que
+modele la superficie inclinada del sólido}
 \begin{center}
   \begin{tabular}{c@{\hspace{2cm}}c}
     \begin{tabular}{|c|c|c|c|}
@@ -32,8 +37,9 @@
   \end{tabular}
 \end{center}
 
-\section*{Mediante el uso de las la integral doble calcule el volumen del sólido}
-
+\subsection*{b.- Mediante el uso de las la integral doble calcule el
+volumen del sólido}
+\vspace{-1cm}
 \begin{center}
   \[
     \begin{array}{c@{\hspace{1cm}}|@{\hspace{1cm}}c}
@@ -47,17 +53,23 @@
       \end{aligned}
       &
       \begin{aligned}
-        &\int_{0}^{13} \int_{0}^{\frac{143-11x}{13}} 16 \left(1 - \frac{x}{13} - \frac{y}{11}\right) dy dx \\
-        &\frac{16}{143} \int_{0}^{13} \int_{0}^{\frac{143-11x}{13}} (143 - 11x - 13y) dy dx \\
-        &\frac{16}{143} \int_{0}^{13} \left[ 143y - 11xy - \frac{13y^2}{2} \right]_{0}^{\frac{143-11x}{13}} dx \\
-        &\frac{16}{143} \int_{0}^{13} -7 \cdot 143^2 + 26 \cdot 1573x - 7 \cdot 121x^2 dx \\
-        &\frac{16}{143} \left[ -7 \cdot 143^2x + \frac{26 \cdot 1573x^2}{2} - \frac{7 \cdot 121 x^3}{3} \right]_{0}^{13} \\
+        &\int_{0}^{13} \int_{0}^{\frac{143-11x}{13}} 16 \left(1 -
+        \frac{x}{13} - \frac{y}{11}\right) dy dx \\
+        &\frac{16}{143} \int_{0}^{13} \int_{0}^{\frac{143-11x}{13}}
+        (143 - 11x - 13y) dy dx \\
+        &\frac{16}{143} \int_{0}^{13} \left[ 143y - 11xy -
+        \frac{13y^2}{2} \right]_{0}^{\frac{143-11x}{13}} dx \\
+        &\frac{16}{143} \int_{0}^{13} -7 \cdot 143^2 + 26 \cdot 1573x
+        - 7 \cdot 121x^2 dx \\
+        &\frac{16}{143} \left[ -7 \cdot 143^2x + \frac{26 \cdot
+        1573x^2}{2} - \frac{7 \cdot 121 x^3}{3} \right]_{0}^{13} \\
         &\frac{327124}{3} = 109061,\bar{3}
       \end{aligned}
     \end{array}
   \]
 \end{center}
 
+\subsection*{e. Presente el prototipo}
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[

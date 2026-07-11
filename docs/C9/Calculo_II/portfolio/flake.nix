@@ -22,6 +22,7 @@
               babel-spanish
               xcolor
               amsmath
+              cancel
               hyperref
               pgf
               pgfplots
